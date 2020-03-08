@@ -1,6 +1,6 @@
 <?php
 
-namespace iAvatar777\widgets\KoladaDar0;
+namespace iAvatar777\widgets\KoladaDar;
 
 use iAvatar777\services\DateRus\DateRus;
 use Yii;
@@ -22,7 +22,7 @@ use yii\helpers\VarDumper;
  * всего таких строк 5, последняя соответственно с одним месяцем
  *
  */
-class KoladaDar0
+class KoladaDar
 {
     /** @var int 1-9 */
     public $dayStart;

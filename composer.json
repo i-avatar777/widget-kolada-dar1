@@ -1,6 +1,6 @@
 {
   "name": "i-avatar777/widget-kolada-dar1",
-  "version":"0.0.1",
+  "version": "0.0.1",
   "description": "Виджет для рисования календаря Коляда Дар на лето",
   "keywords": ["kolada-dar0"],
   "type": "project",
@@ -20,7 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "iAvatar777\\widgets\\KoladaDar0\\": "src"
+      "iAvatar777\\widgets\\KoladaDar\\": "src"
     }
   },
   "repositories": [
