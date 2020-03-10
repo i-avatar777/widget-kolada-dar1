@@ -61,7 +61,7 @@ $v = \iAvatar777\widgets\KoladaDar\KoladaDar::init([
         8 => 'Осьмица',
         9 => 'Неделя',
     ],
-    'emptyCell'         => '&nbsp;'
+    'emptyCell'         => '&nbsp;',
     'isDrawIds'         => true,
     'isDrawDateGrigor'  => true,
     'DateGrigorFormat'  => 'd.m.Y',
