@@ -141,6 +141,13 @@ class KoladaDar
     public $cellFormat = 'C';
 
     /**
+     * аттрибуты для тега table
+     *
+     * @var array
+     */
+    public $tableOptions = [];
+
+    /**
      * @param   $fields
      * @return  KoladaDar
      */
@@ -160,11 +167,10 @@ class KoladaDar
                 $fields['DateGrigorFirst'] = $y . '-09-22';
             }
         }
-        
-        foreach ($fields as $k => $v) {
-            $item->$k = $v;
+        if (!isset($fields['tableOptions'])) {
+            $fields['tableOptions'] = [];
         }
-        
+
         return $item;
     }
 
@@ -176,10 +182,8 @@ class KoladaDar
         return self::tag(
             'table',
             $head . $body,
-            [
-                'class' => 'table table-hover table-striped'
-            ]
-            );
+            $this->tableOptions
+        );
     }
 
     private function head()

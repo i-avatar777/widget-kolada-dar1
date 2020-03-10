@@ -2,8 +2,6 @@
 
 Виджет для рисования календаря Коляда Дар на лето
 
-Версия 1.1.19
-
 Соответствует БОСТ 000006-7528 "О задании формата даты и времени в программном коде для русского календаря" http://avr3.ru/doHmJp 
 
 Выводит месяца в табличный календарь, визуально это выглядит так:
@@ -19,7 +17,7 @@
 ## Пример использования
 
 ```
-$v = \avatar\widgets\KaladaDar0::init([
+$v = \iAvatar777\widgets\KoladaDar\KoladaDar::init([
     'dayStart'    => 9,
 ]);
 echo $v->run();
@@ -30,7 +28,7 @@ echo $v->run();
 Расширенный вид запуска с параметрами стилей таблицы:
 
 ```
-$v = \avatar\widgets\KaladaDar0::init([
+$v = \iAvatar777\widgets\KoladaDar\KoladaDar::init([
     'dayStart'    => 9,
     'isSacral'    => true,
     'optionsWeek' => [
@@ -67,6 +65,7 @@ $v = \avatar\widgets\KaladaDar0::init([
     'isDrawIds'         => true,
     'isDrawDateGrigor'  => true,
     'DateGrigorFormat'  => 'd.m.Y',
+    'tableOptions'      => ['class' => 'table table-hover table-striped'],
     'monthNames'        => [
         1 => 'Рамхатъ',
         2 => 'Айлѣтъ',
@@ -106,6 +105,8 @@ echo $v->run();
 
 `cellFormat` - string | callable - формат даты для ячейки месяца по # БОСТ №000006-7528. Может быть задана в виде формата или как функция. Если задана в виде функции то формат следующий
                         function(\DateTime $d, $arr), где $arr это массив пока с одним индектом day который содержит порядковый день месяца по русскому календарю, второй параметр будет в последствии дополнен до полной версии русского стандарта даты.
+
+`tableOptions` - array - аттрибуты для тега table
 
 ## Как вычислить день недели дня старта лета
 
