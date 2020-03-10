@@ -43,12 +43,12 @@ $v = \iAvatar777\widgets\KoladaDar\KoladaDar::init([
          9 => ['style' => 'background-color: #ffffff;'],
      ],
     'optionsColumn' => [
-         1 => ['style' => 'width: 32px;'],
-         2 => ['style' => 'width: 32px;'],
-         3 => ['style' => 'width: 32px;'],
-         4 => ['style' => 'width: 32px;'],
-         5 => ['style' => 'width: 32px;'],
-         6 => ['style' => 'width: 32px;'],
+        1 => ['style' => 'width: 90px;'],
+        2 => ['style' => 'width: 90px;'],
+        3 => ['style' => 'width: 90px;'],
+        4 => ['style' => 'width: 90px;'],
+        5 => ['style' => 'width: 90px;'],
+        6 => ['style' => 'width: 90px;'],
      ],
     'weekDays' => [
         1 => 'Понедельникъ',
@@ -67,16 +67,21 @@ $v = \iAvatar777\widgets\KoladaDar\KoladaDar::init([
     'DateGrigorFormat'  => 'd.m.Y',
     'tableOptions'      => ['class' => 'table table-hover table-striped'],
     'monthNames'        => [
-        1 => 'Рамхатъ',
-        2 => 'Айлѣтъ',
-        3 => 'Бейлѣтъ',
-        4 => 'Гэйлѣтъ',
-        5 => 'Дайлѣтъ',
-        6 => 'Элѣтъ',
-        7 => 'Вэйлѣтъ',
-        8 => 'Хейлѣтъ',
-        9 => 'Тайлѣтъ',
+        1 => '1 Рамхатъ',
+        2 => '2 Айлѣтъ',
+        3 => '3 Бейлѣтъ',
+        4 => '4 Гэйлѣтъ',
+        5 => '5 Дайлѣтъ',
+        6 => '6 Элѣтъ',
+        7 => '7 Вэйлѣтъ',
+        8 => '8 Хейлѣтъ',
+        9 => '9 Тайлѣтъ',
     ],
+    'cellFormat'       => function (DateTime $d, $options) {
+        $day = $options['day'];
+
+        return $day . Html::tag('span', ' / ' . \iAvatar777\services\DateRus\DateRus::format('j K', $d->format('U')), ['style' => 'color:#ccc; font-size:70%;']);
+    },
 ]);
 echo $v->run();
 ```
