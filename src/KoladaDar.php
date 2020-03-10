@@ -171,6 +171,10 @@ class KoladaDar
             $fields['tableOptions'] = [];
         }
 
+        foreach ($fields as $k => $v) {
+            $item->$k = $v;
+        }
+
         return $item;
     }
 
