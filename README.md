@@ -33,6 +33,51 @@ echo $v->run();
 $v = \avatar\widgets\KaladaDar0::init([
     'dayStart'    => 9,
     'isSacral'    => true,
+    'optionsWeek' => [
+         1 => ['style' => 'background-color: #000000; color: #ffffff;'],
+         2 => ['style' => 'background-color: #ffa6a6;'],
+         3 => ['style' => 'background-color: #ffd2a6;'],
+         4 => ['style' => 'background-color: #ffffa6;'],
+         5 => ['style' => 'background-color: #a7fca4;'],
+         6 => ['style' => 'background-color: #a6a6ff;'],
+         7 => ['style' => 'background-color: #bda5d1;'],
+         8 => ['style' => 'background-color: #d4a6f7;'],
+         9 => ['style' => 'background-color: #ffffff;'],
+     ],
+    'optionsColumn' => [
+         1 => ['style' => 'width: 32px;'],
+         2 => ['style' => 'width: 32px;'],
+         3 => ['style' => 'width: 32px;'],
+         4 => ['style' => 'width: 32px;'],
+         5 => ['style' => 'width: 32px;'],
+         6 => ['style' => 'width: 32px;'],
+     ],
+    'weekDays' => [
+        1 => 'Понедельникъ',
+        2 => 'Вторникъ',
+        3 => 'Третейникъ',
+        4 => 'Четверикъ',
+        5 => 'Пятница',
+        6 => 'Шестица',
+        7 => 'Седьмица',
+        8 => 'Осьмица',
+        9 => 'Неделя',
+    ],
+    'emptyCell'         => '&nbsp;'
+    'isDrawIds'         => true,
+    'isDrawDateGrigor'  => true,
+    'DateGrigorFormat'  => 'd.m.Y',
+    'monthNames'        => [
+        1 => 'Рамхатъ',
+        2 => 'Айлѣтъ',
+        3 => 'Бейлѣтъ',
+        4 => 'Гэйлѣтъ',
+        5 => 'Дайлѣтъ',
+        6 => 'Элѣтъ',
+        7 => 'Вэйлѣтъ',
+        8 => 'Хейлѣтъ',
+        9 => 'Тайлѣтъ',
+    ],
 ]);
 echo $v->run();
 ```
@@ -55,9 +100,12 @@ echo $v->run();
 
 `DateGrigorClass` - string - Название класса для григорианской даты если $isDrawDateGrigor=true
 
-`DateGrigorFirst` - string - Дата первого дня года в григорианском календаре в формате 'Y-m-d', по умолчанию текущий
+`DateGrigorFirst` - string - Дата первого дня года в григорианском календаре в формате 'Y-m-d', по умолчанию текущий год считается
 
 `monthNames` - array - массив названий месяцев с индексами от 1 до 9
+
+`cellFormat` - string | callable - формат даты для ячейки месяца по # БОСТ №000006-7528. Может быть задана в виде формата или как функция. Если задана в виде функции то формат следующий
+                        function(\DateTime $d, $arr), где $arr это массив пока с одним индектом day который содержит порядковый день месяца по русскому календарю, второй параметр будет в последствии дополнен до полной версии русского стандарта даты.
 
 ## Как вычислить день недели дня старта лета
 

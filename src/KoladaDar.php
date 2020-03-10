@@ -14,7 +14,7 @@ use yii\helpers\VarDumper;
 
 
 /**
- * Class KaladaDar0
+ * Class KaladaDar
  *
  * Выводит месяца в табличный календарь
  * визуально это выглядит так:
@@ -136,13 +136,13 @@ class KoladaDar
      * https://github.com/i-avatar777/kon/blob/master/%D0%91%D0%9E%D0%A1%D0%A2/%D0%91%D0%9E%D0%A1%D0%A2000006-7528.md
      * 'C / j K'
      *
-     * @var string | function
+     * @var string | callable ( $function(\DateTime $d, ['day' => $monthArray[$monthSlav][$i][$j]]); )
      */
     public $cellFormat = 'C';
 
     /**
      * @param   $fields
-     * @return KoladaDar0
+     * @return  KoladaDar
      */
     public static function init($fields)
     {
@@ -162,7 +162,7 @@ class KoladaDar
         }
         
         foreach ($fields as $k => $v) {
-            $item->k = $v;   
+            $item->$k = $v;
         }
         
         return $item;
@@ -206,9 +206,9 @@ class KoladaDar
             if (isset($h['options'])) {
                 $options = $h['options'];
             }
-            $rows[] = Html::tag('th', $h['name'], $options);
+            $rows[] = self::tag('th', $h['name'], $options);
         }
-        $head = Html::tag(
+        $head = self::tag(
             'thead',
             join('', $rows),
             []
@@ -269,17 +269,17 @@ class KoladaDar
 
             // Добавляю строку с названием месяца
             $rows9[0] = join('', [
-                Html::tag('td', ''),
-                Html::tag('td', ''),
-                Html::tag('td', $this->monthNames[(($r-1)*2 + 1)], ['colspan' => 6]),
-                ($r < $rowsCount) ? Html::tag('td', $this->monthNames[(($r-1)*2 + 2)], ['colspan' => 6]) : Html::tag('td', '', ['colspan' => 6]),
+                self::tag('td', ''),
+                self::tag('td', ''),
+                self::tag('td', $this->monthNames[(($r - 1) * 2 + 1)], ['colspan' => 6]),
+                ($r < $rowsCount) ? self::tag('td', $this->monthNames[(($r-1)*2 + 2)], ['colspan' => 6]) : self::tag('td', '', ['colspan' => 6]),
             ]);
 
             // Добавляю девять недель
             for($i = 1; $i <= 9; $i++) {
                 $row = [];
-                $row[0] = Html::tag('td', $i);
-                $row[1] = Html::tag('td', $weekDays[$i]);
+                $row[0] = self::tag('td', $i);
+                $row[1] = self::tag('td', $weekDays[$i]);
                 $this->add6cell($row, $r, $monthArray, $i, $dateGrigFirstYear);
 
                 // Если это не последняя строка-месяцев календаря
@@ -287,7 +287,7 @@ class KoladaDar
                     $this->add6cell($row, $r, $monthArray, $i, $dateGrigFirstYear, 2);
                 } else {
                     for($j = 1; $j <= 6; $j++) {
-                        $row[$j + 1 + 6] = Html::tag('td', $this->emptyCell);
+                        $row[$j + 1 + 6] = self::tag('td', $this->emptyCell);
                     }
                 }
                 $rows9[$i] = $row;
@@ -298,14 +298,14 @@ class KoladaDar
         $d5 = [];
         foreach ($rows5 as $r1) {
             $r = [];
-            $r[] = Html::tag('tr', $r1[0]);
+            $r[] = self::tag('tr', $r1[0]);
             for ($g = 1; $g <= 9; $g++) {
                 $tr = $r1[$g];
-                $r[] = Html::tag('tr', join('', $tr), ArrayHelper::getValue($this->optionsWeek, $g, []));
+                $r[] = self::tag('tr', join('', $tr), ArrayHelper::getValue($this->optionsWeek, $g, []));
             }
             $d5[] =  join('', $r);
         }
-        $body = Html::tag(
+        $body = self::tag(
             'tbody',
             join('', $d5),
             []
@@ -363,7 +363,7 @@ class KoladaDar
             } else {
                 $v = $monthArray[$monthSlav][$i][$j];
             }
-            $row[$j + 1 + $add] = Html::tag('td', $v, $options);
+            $row[$j + 1 + $add] = self::tag('td', $v, $options);
         }
     }
 
