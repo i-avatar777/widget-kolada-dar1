@@ -46,7 +46,9 @@ echo $v->run();
 Расширенный вид запуска с параметрами стилей таблицы:
 
 ```
-$v = \iAvatar777\widgets\KoladaDar\KoladaDar::init([
+use iAvatar777\widgets\KoladaDar\KoladaDar;
+
+$v = KoladaDar::init([
     'dayStart'    => 9,
     'isSacral'    => true,
     'optionsWeek' => [
@@ -98,7 +100,7 @@ $v = \iAvatar777\widgets\KoladaDar\KoladaDar::init([
     'cellFormat'       => function (DateTime $d, $options) {
         $day = $options['day'];
 
-        return $day . Html::tag('span', ' / ' . \iAvatar777\services\DateRus\DateRus::format('j K', $d->format('U')), ['style' => 'color:#ccc; font-size:70%;']);
+        return $day . KoladaDar::tag('span', ' / ' . \iAvatar777\services\DateRus\DateRus::format('j K', $d->format('U')), ['style' => 'color:#ccc; font-size:70%;']);
     },
 ]);
 echo $v->run();
@@ -163,3 +165,8 @@ https://github.com/i-avatar777/kon/blob/master/%D0%91%D0%9E%D0%A1%D0%A2/%D0%91%D
 
 Yii2
 https://www.yiiframework.com/
+
+## Автор и Творец
+
+Святослав Арханегльский
+@ArhandelSky999
