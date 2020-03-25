@@ -167,9 +167,6 @@ class KoladaDar
                 $fields['DateGrigorFirst'] = $y . '-09-22';
             }
         }
-        if (!isset($fields['tableOptions'])) {
-            $fields['tableOptions'] = [];
-        }
 
         foreach ($fields as $k => $v) {
             $item->$k = $v;
