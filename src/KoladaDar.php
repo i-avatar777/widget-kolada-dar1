@@ -14,7 +14,7 @@ use yii\helpers\VarDumper;
 
 
 /**
- * Class KaladaDar
+ * Class KoladaDar
  *
  * Выводит месяца в табличный календарь
  * визуально это выглядит так:
